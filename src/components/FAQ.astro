@@ -1,0 +1,182 @@
+---
+import { WA_LINKS } from '../lib/constants';
+
+const faqs = [
+  {
+    question: 'Vale mais a pena reformar ou trocar a caixa de direção?',
+    answer: `Depende do estado da peça. Em muitos casos, a reforma sai bem mais barata do que uma caixa nova, e com resultado equivalente — especialmente quando o problema é desgaste nas vedações ou no eixo.
+    
+A gente faz o diagnóstico primeiro. Se a caixa estiver em condição de ser reformada, a gente explica o que vai ser feito e passa o orçamento antes de qualquer coisa. Se não compensar reformar, a gente tem caixas originais recondicionadas em estoque para venda.`,
+  },
+  {
+    question: 'Quanto tempo meu carro fica na oficina?',
+    answer: `O prazo médio para reforma é de 1 dia útil. Na maioria dos casos, o carro entra de manhã e sai no mesmo dia.
+
+Em situações mais complexas — peça difícil de encontrar, dano além do esperado — o prazo pode aumentar, mas você é avisado antes. Nada acontece sem a sua confirmação.`,
+  },
+  {
+    question: 'Qual é o preço do serviço?',
+    answer: `O preço varia bastante de acordo com o modelo, o ano do veículo e o tipo de caixa (hidráulica, mecânica ou elétrica). Não trabalhamos com tabela fixa porque cada caso é diferente.
+
+A forma mais rápida de saber é mandar uma mensagem no WhatsApp com o modelo e ano do seu carro — a gente responde com o orçamento sem rodeios.`,
+  },
+  {
+    question: 'O que cobre a garantia de 6 meses?',
+    answer: `A garantia cobre o serviço de reforma realizado por nós: vedações, peças substituídas e a mão de obra. Se aparecer qualquer problema relacionado ao que fizemos dentro do prazo de 6 meses, a gente resolve sem custo.
+
+A garantia não cobre danos causados por acidente, instalação feita fora da nossa oficina ou mau uso do sistema de direção (como bater o volante no batente com força).
+
+Tudo isso fica registrado em documento que entregamos junto com o serviço.`,
+  },
+  {
+    question: 'Meu carro tem direção elétrica — vocês atendem?',
+    answer: `Sim. A direção elétrica tem particularidades que muitas oficinas não conseguem resolver: além da parte mecânica, a caixa precisa ser programada eletronicamente após a instalação. Se essa etapa for pulada, o carro pode continuar com problemas mesmo com a caixa trocada.
+
+Temos scanner automotivo avançado e carregador de bateria para programação de módulos — os equipamentos necessários para fazer o serviço completo em caixas elétricas.`,
+  },
+  {
+    question: 'Vocês atendem van e caminhonete?',
+    answer: `Sim, atendemos carros de passeio, vans e caminhonetes — todas as linhas. Se tiver dúvida se seu veículo específico é atendido, manda uma mensagem com o modelo e a gente confirma.`,
+  },
+];
+---
+
+<section class="faq section" id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq__inner">
+      <div class="section-header faq__header">
+        <span class="badge badge--accent">Perguntas frequentes</span>
+        <h2 id="faq-title">Ficou com dúvida?</h2>
+        <p>As questões que mais aparecem antes de trazer o carro para a oficina.</p>
+      </div>
+
+      <div class="faq__list">
+        {faqs.map((faq, i) => (
+          <details class="faq__item" name="faq-group">
+            <summary class="faq__question">
+              <span>{faq.question}</span>
+              <svg class="faq__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq__answer">
+              {faq.answer.split('\n\n').map((paragraph) => (
+                <p set:html={paragraph.trim()} />
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="faq__cta">
+        <p>Sua dúvida não está aqui? Manda uma mensagem — a gente responde.</p>
+        <a
+          href={WA_LINKS.faq}
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Perguntar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .faq__header {
+    margin-bottom: 0;
+  }
+
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq__item:last-child {
+    border-bottom: none;
+  }
+
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.375rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    list-style: none;
+    background-color: var(--surface);
+    transition: background-color 0.15s;
+    user-select: none;
+  }
+
+  .faq__question::-webkit-details-marker { display: none; }
+
+  .faq__question:hover {
+    background-color: var(--surface-2);
+  }
+
+  .faq__question span {
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .faq__chevron {
+    flex-shrink: 0;
+    color: var(--accent);
+    transition: transform 0.25s ease;
+  }
+
+  details[open] .faq__chevron {
+    transform: rotate(180deg);
+  }
+
+  details[open] .faq__question {
+    background-color: var(--surface-2);
+    color: var(--accent);
+  }
+
+  .faq__answer {
+    padding: 0 1.5rem 1.5rem;
+    background-color: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq__answer p {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .faq__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .faq__cta p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 50ch;
+  }
+</style>

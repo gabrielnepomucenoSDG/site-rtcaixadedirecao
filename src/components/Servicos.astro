@@ -1,0 +1,190 @@
+---
+import { WA_LINKS } from '../lib/constants';
+---
+
+<section class="servicos section section--alt" id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge--accent">O que fazemos</span>
+      <h2>Serviços especializados em caixa de direção</h2>
+      <p>Atendemos carros de passeio, vans e caminhonetes — todas as linhas, hidráulica, mecânica ou elétrica.</p>
+    </div>
+
+    <div class="servicos__grid">
+
+      <!-- Card 1: Reforma -->
+      <article class="servicos__card card">
+        <div class="servicos__card-top">
+          <div class="servicos__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Reforma e Manutenção</h3>
+        </div>
+
+        <p>Desmontagem completa, diagnóstico de desgaste, substituição de vedações, buchas e eixo quando necessário, e remontagem com peças de qualidade — seja sua caixa hidráulica, mecânica ou elétrica.</p>
+
+        <ul class="servicos__list" role="list">
+          <li>Caixa hidráulica, mecânica e elétrica</li>
+          <li>Prazo médio de reforma: 1 dia útil</li>
+          <li>Carros de passeio, vans e caminhonetes</li>
+          <li>Garantia por escrito de 6 meses</li>
+        </ul>
+
+        <a
+          href={WA_LINKS.reforma}
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Pedir orçamento
+        </a>
+      </article>
+
+      <!-- Card 2: Venda -->
+      <article class="servicos__card card">
+        <div class="servicos__card-top">
+          <div class="servicos__icon servicos__icon--green" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Venda com Pronta Entrega</h3>
+        </div>
+
+        <p>Trabalhamos com caixas de direção originais recondicionadas para os modelos mais comuns do mercado. Se o modelo está no nosso estoque, sai na hora — sem esperar encomenda.</p>
+
+        <ul class="servicos__list" role="list">
+          <li>Caixas originais recondicionadas</li>
+          <li>Modelos populares em estoque</li>
+          <li>Carros de passeio, vans e caminhonetes</li>
+          <li>Consulte disponibilidade pelo WhatsApp</li>
+        </ul>
+
+        <a
+          href={WA_LINKS.venda}
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Consultar estoque
+        </a>
+      </article>
+
+      <!-- Card 3: Diagnóstico -->
+      <article class="servicos__card card">
+        <div class="servicos__card-top">
+          <div class="servicos__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>Diagnóstico Eletrônico e Programação</h3>
+        </div>
+
+        <p>Scanner automotivo avançado com varredura eletrônica de todos os módulos do veículo. Identificamos e zeramos as luzes do painel, e fazemos a programação da caixa elétrica após a instalação — etapa que muitas oficinas pulam.</p>
+
+        <ul class="servicos__list" role="list">
+          <li>Varredura completa de todos os módulos</li>
+          <li>Limpeza de alertas do painel</li>
+          <li>Programação de caixas elétricas</li>
+          <li>Carregador avançado para módulos de direção</li>
+        </ul>
+
+        <a
+          href={WA_LINKS.reforma}
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Agendar diagnóstico
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicos__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .servicos__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .servicos__card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
+  }
+
+  .servicos__card p {
+    color: var(--text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .servicos__card .btn {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .servicos__card-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .servicos__card-top h3 {
+    font-size: 1.25rem;
+  }
+
+  .servicos__icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius);
+    background-color: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+
+  .servicos__icon--green {
+    background-color: var(--green-dim);
+    color: var(--green);
+  }
+
+  .servicos__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .servicos__list li {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.45;
+  }
+
+  .servicos__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 0.8rem;
+    top: 0.1em;
+  }
+</style>

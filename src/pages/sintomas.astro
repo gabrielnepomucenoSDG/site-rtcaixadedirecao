@@ -1,0 +1,301 @@
+---
+import Base from '../layouts/Base.astro';
+import { WA_LINKS } from '../lib/constants';
+
+const sintomas = [
+  {
+    slug: 'direcao-pesada',
+    title: 'Direção pesada para manobrar',
+    urgency: 'Atenção',
+    urgencyColor: 'accent',
+    cause: 'A caixa de direção hidráulica depende de pressão gerada pela bomba para oferecer assistência ao volante. Quando a caixa começa a falhar — seja por desgaste interno, perda de vedação ou falta de fluido — a bomba deixa de conseguir manter a pressão adequada. O resultado é sentido direto no volante: ele fica pesado, especialmente nas manobras em baixa velocidade, onde a assistência é mais necessária.',
+    detail: 'A pesada no frio e melhora com o aquecimento é um sinal precoce: o fluido expande com o calor e temporariamente compensa o vazamento ou a folga. Mas o problema não desaparece — ele piora com o tempo.',
+    action: 'Não espere a direção travar. Quando a pesada começa, o serviço de reforma costuma ser mais simples e barato do que se o problema evoluir para danos mais profundos na caixa.',
+    urgent: false,
+  },
+  {
+    slug: 'barulho-ao-esteercar',
+    title: 'Barulho ao esterçar o volante',
+    urgency: 'Atenção',
+    urgencyColor: 'accent',
+    cause: 'Rangidos, estalos ou gemidos ao virar o volante — especialmente nos extremos do curso — indicam desgaste em buchas, eixos ou vedações dentro da caixa. Em caixas hidráulicas, um barulho grave e contínuo pode ser da própria bomba trabalhando com pressão insuficiente.',
+    detail: 'O barulho pode aparecer em certas situações (só virando para um lado, só quando frio, só com o carro parado) ou ser constante. Qualquer um desses padrões merece investigação.',
+    action: 'Barulhos estruturais em caixas tendem a evoluir. Quanto antes o diagnóstico, maior a chance de a reforma ser suficiente sem precisar trocar a caixa.',
+    urgent: false,
+  },
+  {
+    slug: 'vazamento-fluido',
+    title: 'Mancha avermelhada embaixo do carro',
+    urgency: 'Urgente',
+    urgencyColor: 'red',
+    cause: 'O fluido de direção hidráulica tem coloração avermelhada ou rosada. Uma poça ou gotejamento embaixo do carro — especialmente centralizado ou do lado do motor — indica vazamento no sistema de direção: na caixa em si, nas mangueiras de alta e baixa pressão, ou nas conexões.',
+    detail: 'Com nível baixo de fluido, a bomba passa a trabalhar em seco, o que pode danificá-la. Um sistema com vazamento também perde pressão progressivamente, o que leva a uma direção cada vez mais pesada até travar.',
+    action: 'Vazamento ativo requer atenção imediata. Verificar o nível do reservatório de fluido de direção antes de dirigir longas distâncias até a oficina. Se o nível estiver muito baixo, completar com o fluido correto para o modelo.',
+    urgent: true,
+  },
+  {
+    slug: 'folga-no-volante',
+    title: 'Folga no volante',
+    urgency: 'Urgente',
+    urgencyColor: 'red',
+    cause: 'A "morte" do volante — aquela região em que ele se move sem o carro responder — indica desgaste no mecanismo de pinhão e cremalheira ou nos componentes internos da caixa. Em caixas mais antigas, também pode ser desgaste nas juntas de cardan da coluna de direção.',
+    detail: 'Folga afeta diretamente o controle do veículo, especialmente em velocidade. O carro passa a "vagar" dentro da faixa, exigindo correções constantes do motorista.',
+    action: 'Esse é um problema de segurança ativa. Não esperar piorar — o diagnóstico é rápido e o serviço de reforma geralmente resolve sem necessidade de troca da caixa.',
+    urgent: true,
+  },
+  {
+    slug: 'luz-painel-direcao',
+    title: 'Luz de direção acesa no painel',
+    urgency: 'Diagnóstico eletrônico',
+    urgencyColor: 'accent',
+    cause: 'Veículos com direção elétrica (EPS — Electric Power Steering) têm um módulo eletrônico que controla o motor da caixa. Quando o sistema detecta uma falha — seja no motor elétrico, no sensor de torque, no cabeamento ou no próprio módulo — acende uma luz de alerta no painel.',
+    detail: 'A causa exata da luz só é identificada com scanner automotivo, que lê o código de falha armazenado no módulo. Não é correto trocar a caixa sem fazer esse diagnóstico — em muitos casos, a caixa está boa e o problema é elétrico ou de programação.',
+    action: 'Trazer o carro para leitura com scanner. Em muitos casos, resolver a causa da luz não envolve reforma da caixa — mas a programação eletrônica é obrigatória sempre que uma caixa elétrica é substituída.',
+    urgent: false,
+  },
+  {
+    slug: 'volante-duro-frio',
+    title: 'Volante duro somente quando o carro está frio',
+    urgency: 'Atenção precoce',
+    urgencyColor: 'accent',
+    cause: 'O fluido hidráulico tem viscosidade maior quando frio, o que dificulta a circulação pelo sistema. Uma caixa em bom estado compensa isso normalmente. Quando há desgaste nas vedações ou folga interna, o problema fica mais evidente no frio — e melhora quando o fluido esquenta e dilata, compensando temporariamente a falha.',
+    detail: 'Esse padrão é um aviso precoce. O motorista costuma ignorar porque "passa sozinho depois de uns minutos". Mas o problema existe e tende a evoluir para pesado o tempo todo.',
+    action: 'Aproveitar que o problema ainda é leve para fazer o diagnóstico. A reforma nessa fase costuma ser mais simples — e evita chegar ao ponto em que a direção trava ou a bomba danifica.',
+    urgent: false,
+  },
+];
+---
+
+<Base
+  title="Sintomas de Problema na Caixa de Direção | RT – São Luís, MA"
+  description="Direção pesada, barulho ao esterçar, folga no volante ou luz no painel? Saiba o que cada sintoma indica, a causa e quando agir. Especialista em São Luís – MA."
+  canonical="https://rtcaixadedirecao.com.br/sintomas"
+>
+  <main class="sintomas-page">
+
+    <!-- Hero da página -->
+    <section class="sintomas-hero section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Localização na página">
+          <a href="/">Início</a>
+          <span aria-hidden="true">›</span>
+          <span aria-current="page">Sintomas</span>
+        </nav>
+        <span class="badge badge--accent" style="margin-bottom: 1rem; display: inline-block;">Guia completo</span>
+        <h1>O que os sintomas da sua direção estão dizendo?</h1>
+        <p class="sintomas-hero__sub">
+          Cada sinal que a direção dá tem uma causa. Entender o sintoma ajuda a agir antes que o problema fique maior — e mais caro. Aqui explicamos em linguagem direta o que está acontecendo e o que fazer.
+        </p>
+        <a
+          href={WA_LINKS.sintoma}
+          class="btn btn--primary btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Quero um diagnóstico agora
+        </a>
+      </div>
+    </section>
+
+    <!-- Sintomas detalhados -->
+    <section class="sintomas-list section section--alt">
+      <div class="container">
+        <div class="sintomas-list__items">
+          {sintomas.map((s, i) => (
+            <article class="sintomas-detail" id={s.slug} aria-labelledby={`${s.slug}-title`}>
+              <header class="sintomas-detail__header">
+                <span class={`badge badge--${s.urgencyColor === 'red' ? 'red' : 'accent'}`}>
+                  {s.urgency}
+                </span>
+                <h2 id={`${s.slug}-title`}>{s.title}</h2>
+              </header>
+
+              <div class="sintomas-detail__body">
+                <div class="sintomas-detail__block">
+                  <h3>O que está acontecendo</h3>
+                  <p>{s.cause}</p>
+                </div>
+
+                <div class="sintomas-detail__block">
+                  <h3>Detalhes importantes</h3>
+                  <p>{s.detail}</p>
+                </div>
+
+                <div class={`sintomas-detail__action sintomas-detail__action--${s.urgencyColor === 'red' ? 'red' : 'accent'}`}>
+                  <strong>O que fazer:</strong>
+                  <p>{s.action}</p>
+                </div>
+              </div>
+
+              {i < sintomas.length - 1 && <div class="divider" style="margin-top: 3rem;"></div>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="section" aria-label="Chamada para ação">
+      <div class="container" style="text-align: center; max-width: 640px; margin-inline: auto;">
+        <h2>Reconheceu algum desses sintomas?</h2>
+        <p style="color: var(--text-muted); margin-block: 1rem 1.5rem; max-width: none;">
+          Manda uma mensagem — a gente orienta sobre o próximo passo sem compromisso.
+        </p>
+        <a
+          href={WA_LINKS.sintoma}
+          class="btn btn--primary btn--lg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.089.536 4.05 1.472 5.763L.057 23.05a.75.75 0 0 0 .916.928l5.42-1.393A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.863 0-3.607-.5-5.113-1.371l-.364-.214-3.77.97.998-3.68-.233-.376A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Mini-rodapé de navegação -->
+    <div class="sintomas-nav container" style="padding-block: 1.5rem; border-top: 1px solid var(--border);">
+      <a href="/">← Voltar para a página principal</a>
+      <a href="/bairros-atendidos">Bairros atendidos →</a>
+    </div>
+
+  </main>
+</Base>
+
+<style>
+  .sintomas-page {
+    min-height: 100vh;
+  }
+
+  .sintomas-hero {
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--accent); }
+  .breadcrumb a:hover { text-decoration: underline; }
+
+  .sintomas-hero h1 {
+    margin-block: 0.5rem 1rem;
+    max-width: 20ch;
+  }
+
+  .sintomas-hero__sub {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+    max-width: 56ch;
+    line-height: 1.7;
+  }
+
+  /* Artigos de sintoma */
+  .sintomas-list__items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sintomas-detail {
+    padding-block: 3rem;
+  }
+
+  .sintomas-detail__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .sintomas-detail__header h2 {
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+  }
+
+  .badge--red {
+    background-color: rgba(239,68,68,0.12);
+    color: #EF4444;
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+
+  .sintomas-detail__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 72ch;
+  }
+
+  .sintomas-detail__block h3 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-subtle);
+    margin-bottom: 0.5rem;
+  }
+
+  .sintomas-detail__block p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: none;
+  }
+
+  .sintomas-detail__action {
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .sintomas-detail__action--accent {
+    background-color: var(--accent-dim);
+    border-left: 3px solid var(--accent);
+  }
+
+  .sintomas-detail__action--red {
+    background-color: rgba(239,68,68,0.08);
+    border-left: 3px solid #EF4444;
+  }
+
+  .sintomas-detail__action strong {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+
+  .sintomas-detail__action--accent strong { color: var(--accent); }
+  .sintomas-detail__action--red strong { color: #EF4444; }
+
+  .sintomas-detail__action p {
+    font-size: 0.9375rem;
+    color: var(--text);
+    line-height: 1.65;
+    max-width: none;
+  }
+
+  /* Rodapé de navegação */
+  .sintomas-nav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .sintomas-nav a {
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
+  .sintomas-nav a:hover { text-decoration: underline; }
+</style>

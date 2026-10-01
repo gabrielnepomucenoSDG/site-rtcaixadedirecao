@@ -1,0 +1,14 @@
+{
+  "name": "site-rt-caixa-de-direcao",
+  "version": "1.0.0",
+  "description": "Site institucional RT Caixa de Direção – São Luís, MA",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.15.0"
+  }
+}

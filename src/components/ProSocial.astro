@@ -1,0 +1,192 @@
+---
+// Seção de prova social: avaliações e galeria
+// Placeholders visíveis para substituição futura
+---
+
+<section class="prosocial section section--alt" id="avaliacoes" aria-label="Avaliações e galeria">
+  <div class="container">
+
+    <!-- Avaliações -->
+    <div class="section-header">
+      <span class="badge badge--accent">O que dizem de nós</span>
+      <h2>Avaliações</h2>
+      <p>Veja o que clientes e mecânicos parceiros falam sobre o serviço da RT.</p>
+    </div>
+
+    <div class="prosocial__reviews" role="list" aria-label="Avaliações de clientes">
+      <!-- Placeholder 1 -->
+      <article class="prosocial__review-card card" role="listitem">
+        <div class="prosocial__review-header">
+          <div class="prosocial__avatar" aria-hidden="true">?</div>
+          <div>
+            <strong>[PREENCHER: Nome do cliente]</strong>
+            <div class="prosocial__stars" aria-label="5 estrelas" role="img">★★★★★</div>
+          </div>
+        </div>
+        <blockquote class="prosocial__quote">
+          "[PREENCHER: depoimento real do cliente]"
+        </blockquote>
+        <p class="prosocial__source">Google Meu Negócio</p>
+      </article>
+
+      <!-- Placeholder 2 -->
+      <article class="prosocial__review-card card" role="listitem">
+        <div class="prosocial__review-header">
+          <div class="prosocial__avatar" aria-hidden="true">?</div>
+          <div>
+            <strong>[PREENCHER: Nome do cliente]</strong>
+            <div class="prosocial__stars" aria-label="5 estrelas" role="img">★★★★★</div>
+          </div>
+        </div>
+        <blockquote class="prosocial__quote">
+          "[PREENCHER: depoimento real do cliente]"
+        </blockquote>
+        <p class="prosocial__source">Google Meu Negócio</p>
+      </article>
+
+      <!-- Placeholder 3 -->
+      <article class="prosocial__review-card card" role="listitem">
+        <div class="prosocial__review-header">
+          <div class="prosocial__avatar" aria-hidden="true">?</div>
+          <div>
+            <strong>[PREENCHER: Nome do cliente]</strong>
+            <div class="prosocial__stars" aria-label="5 estrelas" role="img">★★★★★</div>
+          </div>
+        </div>
+        <blockquote class="prosocial__quote">
+          "[PREENCHER: depoimento real do cliente]"
+        </blockquote>
+        <p class="prosocial__source">Google Meu Negócio</p>
+      </article>
+    </div>
+
+    <!-- Divisor -->
+    <div class="divider" style="margin-block: clamp(2.5rem, 6vw, 4rem);"></div>
+
+    <!-- Galeria -->
+    <div class="prosocial__gallery-header section-header" style="margin-bottom: 1.5rem;">
+      <span class="badge badge--accent">Galeria</span>
+      <h2>A oficina por dentro</h2>
+      <p>Fotos reais da bancada, dos equipamentos e dos serviços realizados.</p>
+    </div>
+
+    <div class="prosocial__gallery" role="list" aria-label="Galeria de fotos da oficina">
+      {[
+        '[FOTO: Fachada da oficina]',
+        '[FOTO: Bancada de trabalho]',
+        '[FOTO: Máquina de teste hidráulico]',
+        '[FOTO: Scanner automotivo]',
+        '[FOTO: Antes e depois — caixa reformada]',
+        '[FOTO: Equipe da RT]',
+      ].map((label) => (
+        <div class="prosocial__photo photo-placeholder" role="listitem" aria-label={label}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Reviews grid */
+  .prosocial__reviews {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.125rem;
+  }
+
+  @media (min-width: 640px) {
+    .prosocial__reviews { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 960px) {
+    .prosocial__reviews { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .prosocial__review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .prosocial__review-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .prosocial__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--surface-3);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-subtle);
+    font-size: 1.125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .prosocial__review-header > div strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .prosocial__stars {
+    color: var(--accent);
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin-top: 0.1rem;
+  }
+
+  .prosocial__quote {
+    font-size: 0.9rem;
+    color: var(--text-subtle);
+    font-style: italic;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .prosocial__source {
+    font-size: 0.75rem;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* Galeria */
+  .prosocial__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    .prosocial__gallery { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .prosocial__gallery { grid-template-columns: repeat(6, 1fr); }
+  }
+
+  .prosocial__photo {
+    aspect-ratio: 1;
+    min-height: auto;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+
+  .prosocial__photo svg {
+    opacity: 0.35;
+  }
+</style>
