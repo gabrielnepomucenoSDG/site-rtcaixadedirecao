@@ -12,7 +12,7 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
 
       <h1 class="hero__title">
         Direção pesada ou<br />
-        barulho ao virar?
+        batendo?
       </h1>
 
       <p class="hero__subtitle">
@@ -52,15 +52,33 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
       </div>
     </div>
 
-    <!-- Visual / placeholder de foto -->
-    <div class="hero__visual" aria-hidden="true">
-      <div class="hero__photo-placeholder">
-        <div class="hero__photo-inner">
-          <!-- Ícone de chave inglesa decorativo -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-          </svg>
-          <span>[FOTO: Bancada ou fachada da oficina]</span>
+    <!-- Visual / Emblema oficial da Marca -->
+    <div class="hero__visual">
+      <div class="hero__brand-card">
+        <div class="hero__brand-glow" aria-hidden="true"></div>
+        <img
+          src="/images/logo-transparent.png"
+          alt="RT Caixa de Direção - Especialista Mecânica, Hidráulica e Elétrica"
+          class="hero__brand-logo"
+          width="260"
+          height="260"
+          loading="eager"
+        />
+        <div class="hero__brand-features">
+          <div class="hero__brand-feature">
+            <span class="hero__feature-dot" aria-hidden="true"></span>
+            <span>Mecânica • Hidráulica • Elétrica</span>
+          </div>
+          <div class="hero__brand-pills">
+            <span class="hero__brand-pill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Garantia 6 Meses
+            </span>
+            <span class="hero__brand-pill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              1 Dia Útil
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -94,8 +112,8 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
     overflow: hidden;
     /* Gradient de fundo para dar profundidade */
     background-image:
-      radial-gradient(ellipse 80% 60% at 75% 40%, rgba(232,160,0,0.07) 0%, transparent 65%),
-      radial-gradient(ellipse 60% 80% at 10% 80%, rgba(232,160,0,0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 60% at 75% 40%, rgba(56, 182, 255, 0.08) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 80% at 10% 80%, rgba(56, 182, 255, 0.04) 0%, transparent 60%);
   }
 
   /* Glow decorativo */
@@ -105,7 +123,7 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(232,160,0,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.08) 0%, transparent 70%);
     pointer-events: none;
     border-radius: 50%;
   }
@@ -161,7 +179,7 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
     align-items: center;
   }
 
-  /* Visual placeholder */
+  /* Visual Brand Showcase */
   .hero__visual {
     display: none;
   }
@@ -172,32 +190,99 @@ import { WA_LINKS, MAPS_ROUTE_GOOGLE, HOURS_WEEKDAY, HOURS_SATURDAY } from '../l
     }
   }
 
-  .hero__photo-placeholder {
-    aspect-ratio: 4/3;
-    background-color: var(--surface);
-    border: 2px dashed var(--border);
+  .hero__brand-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(22, 28, 38, 0.85) 0%, rgba(15, 19, 26, 0.95) 100%);
+    border: 1px solid rgba(56, 182, 255, 0.25);
     border-radius: var(--radius-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero__photo-inner {
+    padding: 2.5rem 1.75rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 2rem;
-    color: var(--text-subtle);
-    font-style: italic;
-    font-size: 0.8125rem;
     text-align: center;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 35px rgba(56, 182, 255, 0.12);
+    overflow: hidden;
   }
 
-  .hero__photo-inner svg {
-    color: var(--text-subtle);
-    opacity: 0.5;
+  .hero__brand-glow {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(56, 182, 255, 0.22) 0%, transparent 70%);
+    filter: blur(25px);
+    pointer-events: none;
+  }
+
+  .hero__brand-logo {
+    width: 230px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 8px 24px rgba(56, 182, 255, 0.3));
+    transition: transform 0.3s ease;
+  }
+
+  .hero__brand-card:hover .hero__brand-logo {
+    transform: scale(1.03);
+  }
+
+  .hero__brand-features {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.875rem;
+    width: 100%;
+  }
+
+  .hero__brand-feature {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .hero__feature-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .hero__brand-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .hero__brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .hero__brand-pill svg {
+    color: var(--accent);
   }
 
   /* Barra de informações */

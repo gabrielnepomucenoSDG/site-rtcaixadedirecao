@@ -41,10 +41,17 @@ const bairros = [
       <!-- Coluna 1: Marca -->
       <div class="rodape__col rodape__col--brand">
         <div class="rodape__logo">
-          <span class="rodape__logo-mark" aria-hidden="true">RT</span>
+          <img
+            src="/images/logo-transparent.png"
+            alt="RT Caixa de Direção"
+            class="rodape__logo-img"
+            width="52"
+            height="52"
+            loading="lazy"
+          />
           <div>
             <strong>RT Caixa de Direção</strong>
-            <span>Especialista em São Luís – MA</span>
+            <span>Mecânica • Hidráulica • Elétrica</span>
           </div>
         </div>
         <p class="rodape__tagline">
@@ -121,8 +128,8 @@ const bairros = [
 <style>
   /* ——— Fechamento ——— */
   .fechamento {
-    background: linear-gradient(135deg, #111000 0%, #1a1400 50%, #0D0D0D 100%);
-    border-top: 1px solid rgba(232,160,0,0.2);
+    background: linear-gradient(135deg, #070e17 0%, #0d1624 50%, #080A0D 100%);
+    border-top: 1px solid rgba(56, 182, 255, 0.2);
     text-align: center;
   }
 
@@ -147,7 +154,7 @@ const bairros = [
 
   /* ——— Rodapé ——— */
   .rodape {
-    background-color: #080808;
+    background-color: #06070a;
     border-top: 1px solid var(--border);
     padding-top: clamp(2.5rem, 6vw, 4rem);
     padding-bottom: 1.5rem;
@@ -190,19 +197,12 @@ const bairros = [
     gap: 0.875rem;
   }
 
-  .rodape__logo-mark {
-    width: 46px;
-    height: 46px;
-    background-color: var(--accent);
-    color: #0D0D0D;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Barlow Condensed', system-ui, sans-serif;
-    font-weight: 800;
-    font-size: 1.125rem;
+  .rodape__logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
     flex-shrink: 0;
+    filter: drop-shadow(0 2px 10px rgba(56, 182, 255, 0.35));
   }
 
   .rodape__logo > div {
